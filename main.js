@@ -103,22 +103,29 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function addRandomTweet() {
-    let randomTweetContent = "This is a random tweet!";
-    let randomLikes = Math.floor(Math.random() * 100);
-    let randomComments = [];
+  let randomTweetContent = "This is a random tweet!";
+  let randomLikes = Math.floor(Math.random() * 100);
+  let randomComments = [];
 
-    for (let i = 0; i < 30; i++) {
-      let randomCommentText = generateRandomEnglishComment();
-      let randomComment = {
-        name: generateRandomBotName(),
-        text: randomCommentText
-      };
-      randomComments.push(randomComment);
-    }
-
-    addTweet(randomTweetContent, randomLikes, randomComments);
-    saveTweets();
+  for (let i = 0; i < 30; i++) {
+    let randomCommentText = generateRandomEnglishComment();
+    let randomComment = {
+      name: generateRandomBotName(),
+      text: randomCommentText
+    };
+    randomComments.push(randomComment);
   }
+
+  let randomTweet = {
+    content: randomTweetContent,
+    likes: randomLikes,
+    comments: randomComments
+  };
+
+  addTweet(randomTweetContent, randomLikes, randomComments);
+  tweets.push(randomTweet); // Menyimpan tweet bot ke dalam array tweets
+  saveTweets(); // Menyimpan tweets ke dalam local storage
+}
 
   function generateRandomEnglishComment() {
     let comments = [
